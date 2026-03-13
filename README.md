@@ -43,21 +43,6 @@ This project demonstrates how indoor geometry impacts wireless communication sys
 ---
 
 ## Repository Structure
-├── main.m
-├── WarehouseConfig.m
-├── SiteFactory.m
-├── WarehouseScene.m
-├── PropagationSimulator.m
-├── ResultVisualizer.m
-├── office.stl
-├── Figures/
-│ ├── office.png
-│ ├── 1r1d.png
-│ ├── multiple_antenna_1r1d.png
-│ ├── signal_strength.png
-│ └── ablation.png
-└── Warehouse_Propagation.pdf
-
 
 **main.m**  
 Entry point that runs the complete simulation pipeline.
@@ -97,19 +82,24 @@ Visualization
 
 ## Mathematical Model
 
-The received signal is modeled as a **sum of multipath components**:
+The received signal is modeled as a sum of multipath components:
 
-\[
-h = \sum_{\ell=1}^{L} \alpha_\ell e^{-j2\pi f_c \tau_\ell}
-\]
+h = Σ_{l=1..L} α_l · exp(-j2π f_c τ_l)
 
-The received power is proportional to
+where
 
-\[
-P_r \propto |h|^2
-\]
+- α_l : path attenuation  
+- τ_l : path delay  
+- f_c : carrier frequency  
 
-Multipath interference therefore produces **constructive peaks** and **deep fades**.
+The received power is proportional to:
+
+P_r ∝ |h|²
+
+Multipath interference therefore produces:
+
+- **constructive interference → signal peaks**
+- **destructive interference → deep fades**
 
 ---
 
